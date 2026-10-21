@@ -1,0 +1,177 @@
+/* 전체 CSS 설정 */
+* {
+    box-sizing: border-box; /*width, height, padding border 포함 */
+}
+body {
+    margin: 0;
+    background-color: #f4f6fa; /*배경색*/
+    color: #222;
+}
+.title-ara{
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #263859;
+    color: white;
+}
+.small-title{
+    font-size: 14px;
+    letter-spacing: 5px;
+    color: #aec6ff;
+}
+.title-ara h1{
+    margin: 10px 0;
+    font-size: 42px;
+}
+/*실습영역*/
+.study-ara{
+    width: 900px;
+    margin: 70px auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+.study-ara h2 {
+    color: #4056a1;
+}
+.study-ara>p{
+    color: #666;
+    margin-bottom: 40px;
+}
+/*1. transform*/
+.box-ara {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+.item {
+    width: 200px;
+}
+.box {
+    width: 120px;
+    height: 120px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+}
+.move {
+    background-color: #536dfe;
+
+}
+.move:hover{
+    transform: translateX(40px);
+}
+.scale{
+    background-color: #4233f1;
+}
+.scale:hover {
+    transform: scale(1.1);
+}
+.rotate {
+    background-color: #459ee3;
+}
+.rotate:hover {
+    rotate: 45deg;
+}
+.compare-ara{
+    display: flex;
+    justify-content: space-around;
+}
+.compare-item{width: 320px;}
+.compare-box {
+    width: 150px;
+    padding: 25px;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    background-color: darkred;
+    cursor: pointer;
+}
+.fast:hover {
+    transform: translateX(100px);
+    background-color: green;
+}
+.smooth{
+    transition: transform 0.8s ease,
+                background-color 0.8s ease;
+}
+.smooth:hover {
+    transform: translateX(100px);
+    background-color: darkred;
+}
+/*animation*/
+.animation-area{
+    display:flex;
+    justify-content: space-around;
+    text-align: center;
+    height: 230px;
+}
+.animation-item{
+    width: 230px;
+    position: relative;
+}
+.ball{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 80px auto 0;
+    background-color: #263859;
+    animation: bounce 1s ease-in-out infinite alternate;
+}
+/*애니메이션 적용시 @*/
+@keyframes bounce{
+    /*시작*/
+    from{
+        transform: translateY(0);
+    }
+    /*끝*/
+    to{
+        transform: translateY(-70px);
+    /*Y가 음수일때 위로올라감*/
+    }
+}
+.spinner {
+    width: 90px;
+    height: 90px;
+    margin: 55px auto 0;
+    justify-content: center;
+    align-items: center;
+    /*교차축을 중심으로 가운데에 정렬*/
+    font-size: 55px;
+    background-color: aquamarine;
+    animation: spin 2s linear infinite;
+    display: flex;
+}
+@keyframes spin {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.runner{
+    height: 70px;
+    width: 80px;
+    padding: 20px;
+    margin: 70px auto 0;
+    color: white;
+    background-color: #666666;
+    border-radius: 10px;
+    display: flex;
+    animation: moveRunner 2s ease-in-out infinite alternate;
+}
+@keyframes moveRunner {
+    from{
+        transform: translateY(50px);
+    }
+    to{
+        transform: translateY(120px);
+    }
+}

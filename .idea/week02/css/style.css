@@ -1,0 +1,17 @@
+/* 선택자{속성 : 값; }*/
+body {
+    font-family: Arial, monospace;
+    margin: 40px;
+}
+h1 {
+    color: blueviolet;
+}
+section {
+    margin-bottom: 24px;
+    padding: 16px; /* 내부 여백 */
+    border: 1px solid #ccc;
+}
+input, button {
+    margin: 4px;
+    padding: 8px;
+}

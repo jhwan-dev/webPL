@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>BMI 계산 결과</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+    }
+    .result-container {
+      width: 400px;
+      margin: 80px auto;
+      padding: 30px;
+      text-align: center;
+      background-color: white;
+      border: 1px solid #dddddd;
+      border-radius: 12px;
+    }
+
+    .bmi-value {
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 18px;
+      text-decoration: none;
+      border: 1px solid #333333;
+      border-radius: 6px;
+      color: #333333;
+    }
+  </style>
+</head>
+<body>
+<div class="result-container">
+  <h1>BMI 계산 결과</h1>
+
+  <! Model에 errorMessage가 있을 때만 아래 영역이 출력되도록 th:if를 작성하세요.  -->
+  <div th:if="${errorMessage != null}">
+    <!-- Model에 저장된 errorMessage를  화면에 출력하도록 th:text를 작성하세요. -->
+    <p class="error" th:text="${errorMessage}">
+      오류 메시지
+    </p>
+  </div>
+
+  <!-- errorMessage가 없을 때만  정상적인 BMI 결과가 출력되도록 th:if를 작성하세요. -->
+  <div th:if="${errorMessage == null}">
+    <p>
+      <!-- Model에 저장된 name 값을 화면에 출력하도록 th:text를 작성하세요. -->
+      <span th:text="${name}">
+                사용자
+            </span>님의 BMI는
+    </p>
+    <!-- Model에 저장된 bmi 값을 화면에 출력하도록 th:text를 작성하세요. -->
+    <p class="bmi-value" th:text="${bmi}">
+      0.0
+    </p>
+    <p>입니다.</p>
+  </div>
+  <!--다시 계산하기를 누르면 index2.html로 이동하도록 href를 작성하세요.   -->
+  <a href="/index.html">다시 계산하기</a>
+</div>
+</body>
+</html>

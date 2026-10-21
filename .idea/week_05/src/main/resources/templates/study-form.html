@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+    }
+    .container{
+      width: 420px;
+      margin: 60px auto;
+      padding: 30px;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+    }
+    h1{
+      text-align: center;
+    }
+    label{
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 6px;
+    }
+    input, select{
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    button{
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      cursor: pointer;
+    }
+    .home-link{
+      display: block;
+      margin-top: 18px;
+      text-align: center;
+
+    }
+    .input-error{
+      border: 2px solid red;
+      background: #fff5f5;
+    }
+    .error-message{
+      margin: 5px 0 0;
+      color:red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>스터디 신청</h1>
+    <form th:action="@{/study}" th:object ="${studyForm}" method="post" novalidate>
+
+      <label for="name">신청자 이름</label>
+      <input type="text" id="name" th:field="*{name}" th:errorclass="input-error" required>
+      <p class="error-message" th:errors="*{name}">신청자 이름 오류</p>
+      <label for="topic">관심 주제</label>
+      <select id="topic" th:field="*{topic}" th:errorclass="input-error" required>
+        <option value="">주제를 선택하세요.</option>
+        <option value="Spring Boot">Spring Boot</option>
+        <option value="JAVA">JAVA</option>
+        <option value="데이터베이스">데이터베이스</option>
+      </select>
+      <p class="error-message" th:errors="*{topic}">관심주제 오류</p>
+      <label for="studyHours">주당 학습시간</label>
+      <input type="number" id="studyHours" th:field="*{studyHours}" min="1" th:errorclass="input-error" required>
+      <p class="error-message" th:errors="*{studyHours}">주당 학습시간 오류</p>
+      <button type="submit">신청하기</button>
+    </form>
+    <a class="home-link" th:href="@{/}">메인 화면으로</a>
+  </div>
+</body>
+</html>

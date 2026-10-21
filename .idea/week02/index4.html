@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NEON TECH FINDER</title>
+    <link rel="stylesheet" href="css/style4.css">
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+        <p class="eyebrow">WEB PROGRAMMING LAB</p>
+        <h1>NEON TECH FINDER</h1>
+        <p id="message">미래의 IT가치를 탐색하는 웹서비스</p>
+        <div class="status-line">SYSTEM STATUS
+            <span id="status" class="status">OFFLINE</span>
+        </div>
+        <button id="systemButton" type="button">SYSTEM START</button>
+    </section>
+    <section class="module">
+      <p class="eyebrow">CLIENT DOM LAB</p>
+      <h3>CATALOG</h3>
+      <p>JS로 상품 카드를 생성</p>
+      <div class="button-area">
+        <button id="loadButton" type="button">CATALOG LOAD</button>
+        <button id="clearButton" type="button">CLEAR</button>
+      </div>
+      <div id="catalog" class="catalog-grid">
+        <p class="empty-message">생성된 상품이 없음</p>
+      </div>
+    </section>
+      <section class="module">
+          <p class="eyebrow">PRODUCT VALIDATION</p>
+          <h2>상품 등록 미리 보기</h2>
+          <form id="productForm" class="simple-form">
+              <input type="text" id="productName" placeholder="상품명" required minlength="2"/>
+              <input type="number" id="productPrice" placeholder="상품가격" required min="1000"/>
+              <button type="submit">PREVIEW</button>
+          </form>
+          <p id="validationMessage"></p>
+          <article id="previewCard" class="preview-card hidden">
+              <span class="product-type">NEW PRODUCT</span>
+              <h3 id="previewName"></h3>
+              <p id="previewPrice" class="preview-price"></p>
+          </article>
+      </section>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>

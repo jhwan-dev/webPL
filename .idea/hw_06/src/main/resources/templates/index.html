@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>study 신청</title>
+  <style>
+    body{font-family: Arial,sans-serif;
+      background-color: #f4f6f8;
+    }
+    .container{
+      width: 520px;
+      margin: 50px auto;
+      padding: 35px;
+      text-align:  center;
+      background: white;
+      border:1px solid #ddd;
+      border-radius: 12px;
+    }
+    a {
+      display: block;
+      margin-top: 20px;
+      padding: 14px;
+      text-decoration: none;
+      color: black;
+      border: 1px solid #777;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Spring MVC</h1>
+  <p>Form DTO와 @ModelAttribute 실습</p>
+  <a th:href="@{/products/new}">상품 등록하기</a>
+</div>
+</body>
+</html>

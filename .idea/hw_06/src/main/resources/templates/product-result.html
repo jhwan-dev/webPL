@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>상품 등록 결과</title>
+
+    <style>
+        /*
+         body
+         → 웹 페이지 전체 영역에 적용됩니다.
+
+         font-family
+         → 화면에 표시되는 글꼴을 지정합니다.
+
+         background-color
+         → 웹 페이지 전체의 배경색을 지정합니다.
+        */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+
+        /*
+         .container
+         → class="container"가 작성된 HTML 요소에 적용됩니다.
+
+         class
+         → 여러 HTML 요소에 같은 디자인을 적용하기 위해 사용하는 이름입니다.
+        */
+        .container {
+            width: 460px;                  /* 영역의 너비 */
+            margin: 80px auto;             /* 위아래 80px, 좌우 가운데 정렬 */
+            padding: 30px;                 /* 영역 안쪽의 여백 */
+            background-color: white;       /* 영역의 배경색 */
+            border: 1px solid #dddddd;     /* 테두리 */
+            border-radius: 12px;           /* 모서리를 둥글게 표시 */
+        }
+
+
+        /*
+         h1 태그에 적용됩니다.
+         제목을 가운데 정렬합니다.
+        */
+        h1 {
+            text-align: center;
+        }
+
+
+        /*
+         .result
+         → class="result"가 작성된 div에 적용됩니다.
+         → 등록된 상품 정보를 보여 주는 영역입니다.
+        */
+        .result {
+            margin-top: 25px;              /* 위쪽 여백 */
+            padding: 20px;                 /* 내부 여백 */
+            background-color: #f8f9fa;     /* 결과 영역의 배경색 */
+            border-radius: 8px;            /* 모서리를 둥글게 표시 */
+        }
+
+
+        /*
+         .result 안에 있는 p 태그에 적용됩니다.
+         각 상품 정보 사이에 간격을 줍니다.
+        */
+        .result p {
+            margin: 12px 0;
+        }
+
+
+        /*
+         .link-area
+         → 다시 등록하기, 메인 화면으로 링크를
+           가운데 정렬하기 위한 영역입니다.
+        */
+        .link-area {
+            text-align: center;
+        }
+
+
+        /*
+         a
+         → 링크에 적용되는 디자인입니다.
+        */
+        a {
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+<!-- =====================================================
+
+     [학생 실습]
+
+     상품 등록 결과 화면을 완성하세요.
+
+     앞에서 Controller는 다음과 같이 작성했습니다.
+
+     @ModelAttribute("productForm") ProductForm productForm
+
+     @ModelAttribute에 의해 ProductForm 객체가
+     "productForm"이라는 이름으로 Model에 추가됩니다.
+
+     따라서 Thymeleaf에서는 다음과 같이 사용할 수 있습니다.
+
+     ${productForm.title}
+     ${productForm.price}
+     ${productForm.quantity}
+     ${productForm.category}
+     ${productForm.onSale}
+
+
+     [중요]
+
+     productForm
+     → @ModelAttribute("productForm")의 이름입니다.
+
+     title, price, quantity, category, onSale
+     → ProductForm 클래스의 프로퍼티 이름입니다.
+
+     th:text
+     → Model에 저장된 값을 HTML 화면에 출력할 때 사용합니다.
+
+     예:
+     th:text="${productForm.title}"
+
+     → productForm 객체의 title 값을 화면에 출력합니다.
+
+===================================================== -->
+
+
+<!--
+    1. 전체 결과 화면을 감싸는 div를 작성하세요.
+
+       사용할 class : container
+
+       힌트:
+       <div class="________">
+
+-->
+<div class="container">
+    <h1>상품 등록 완료</h1>
+    <div class="result">
+        <p>상품명 : <strong th:text="${productForm.title}">상품명</strong></p>
+        <p>가격 : <strong th:text="${productForm.price}">0</strong> 원</p>
+        <p>수량 : <strong th:text="${productForm.quantity}">0</strong> 개</p>
+        <p>카테고리 : <strong th:text="${productForm.category}">카테고리</strong></p>
+        <p>판매여부 : <strong th:text="${productForm.onSale}">판매여부</strong></p>
+
+    </div>
+    <div class="link-area">
+        <a th:href="@{/products/new}">다시 등록하기</a>
+        <br>
+        <a th:href="@{/}">메인 화면으로</a>
+    </div>
+</div>
+
+
+<!--
+    2. 제목을 작성하세요.
+
+       출력할 제목:
+       상품 등록 완료
+-->
+
+
+<!--
+    3. 상품 정보를 보여 줄 영역을 작성하세요.
+
+       사용할 class : result
+-->
+
+
+<!--
+    4. 상품명을 출력하세요.
+
+       표시 형식:
+       상품명: 무선 마우스
+
+       ProductForm에서 사용할 프로퍼티:
+       title
+
+       Thymeleaf 표현식:
+       ${productForm.title}
+
+       힌트:
+       <strong th:text="________________">
+-->
+
+
+<!--
+    5. 가격을 출력하세요.
+
+       표시 형식:
+       가격: 25000 원
+
+       ProductForm 프로퍼티:
+       price
+
+       Thymeleaf 표현식:
+       ${productForm.price}
+-->
+
+
+<!--
+    6. 수량을 출력하세요.
+
+       표시 형식:
+       수량: 10 개
+
+       ProductForm 프로퍼티:
+       quantity
+
+       Thymeleaf 표현식:
+       ${productForm.quantity}
+-->
+
+
+<!--
+    7. 카테고리를 출력하세요.
+
+       표시 형식:
+       카테고리: 전자제품
+
+       ProductForm 프로퍼티:
+       category
+
+       Thymeleaf 표현식:
+       ${productForm.category}
+-->
+
+
+<!--
+    8. 판매 여부를 출력하세요.
+
+       ProductForm 프로퍼티:
+       onSale
+
+       Thymeleaf 표현식:
+       ${productForm.onSale}
+
+       현재 단계에서는
+       true 또는 false가 그대로 출력되어도 됩니다.
+-->
+
+
+<!--
+    9. 결과 영역 div를 닫습니다.
+-->
+
+
+<!--
+    10. 화면 이동 링크를 넣을 영역을 작성하세요.
+
+        사용할 class : link-area
+-->
+
+
+<!--
+    11. "다시 등록하기" 링크를 작성하세요.
+
+        이동 주소:
+        /products/new
+
+        Thymeleaf 링크 문법:
+        th:href="@{/products/new}"
+
+        링크를 클릭하면
+        GET /products/new 요청이 발생합니다.
+-->
+
+
+<!--
+    12. 줄을 바꾼 후
+        "메인 화면으로" 링크를 작성하세요.
+
+        이동 주소:
+        /
+
+        Thymeleaf 링크 문법:
+        th:href="@{/}"
+-->
+
+
+<!--
+    13. link-area div와 container div를 닫습니다.
+-->
+
+
+</body>
+
+</html>

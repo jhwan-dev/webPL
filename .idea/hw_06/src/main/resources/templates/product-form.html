@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>상품 등록하기</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+    }
+
+    .container {
+      width: 420px;
+      margin: 60px auto;
+      padding: 30px;
+      background-color: white;
+      border: 1px solid #dddddd;
+      border-radius: 12px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      cursor: pointer;
+    }
+
+    .home-link {
+      display: block;
+      margin-top: 18px;
+      text-align: center;
+    }
+    .input-error{
+      border: 2px solid red;
+      background: #fff5f5;
+    }
+    .error-message{
+      margin: 5px 0 0;
+      color:red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <h1>상품 등록</h1>
+  <form th:action="@{/products}" th:object="${productForm}" method="post" novalidate>
+
+    <label for="title">상품명</label>
+    <input type="text" th:field="*{title}" th:errorclass="input-error" required>
+    <p class="error-message" th:errors="*{title}">상품명 오류</p>
+
+    <label for="price">가격</label>
+    <input type="number" th:field="*{price}" th:errorclass="input-error" min="0" required>
+    <p class="error-message" th:errors="*{price}">가격 오류</p>
+
+    <label for="quantity">수량</label>
+    <input type="number" th:field="*{quantity}" th:errorclass="input-error" min="1" required>
+    <p class="error-message" th:errors="*{quantity}">수량 오류</p>
+
+    <label for="category">카테고리</label>
+    <select id="category" th:field="*{category}" th:errorclass="input-error" required>
+      <option value="">카테고리를 선택하세요.</option>
+      <option value="전자제품">전자제품</option>
+      <option value="도서">도서</option>
+      <option value="생활용품">생활용품</option>
+    </select>
+    <p class="error-message" th:errors="*{category}">카테고리 오류</p>
+
+    <label for="onSale">판매여부</label>
+    <select th:field="*{onSale}" th:errorclass="input-error" required>
+      <option value="true">판매중</option>
+      <option value="false">판매안함</option>
+    </select>
+    <p class="error-message" th:errors="*{onSale}">판매여부 오류</p>
+    <button type="submit">상품등록</button>
+  </form>
+  <a class="home-link" th:href="@{/}">메인 화면으로</a>
+</div>
+
+
+</body>
+</html>

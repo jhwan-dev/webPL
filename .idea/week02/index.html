@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>http request, response 실습</title>
+        <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>http 요청, 응답 실습</h1>
+    <section>
+        <h2>1. 일반 페이지 요청</h2>
+        <p>브라우저가 이 html 문서를 요청하여 화면에 표시했습니다.</p>
+        <a href="result.html">결과 페이지 열기</a>
+    </section>
+
+
+    <section>
+        <h2>2. GET 요청</h2>
+        <form action="result.html" method="get">
+            <label for="keyword">검색어 : </label>
+            <input id="keyword" type="text" name="k" value="spring"/>
+            <button type ="submit">GET 요청 처리</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>3. POST 요청</h2>
+        <form action="result.html" method="post">
+            <label for="userId">ID : </label>
+            <input id="userId" type="text" name="id" value="aaa"/>
+            <label for="password">ID : </label>
+            <input id="password" type="password" name="password" value="1234"/>
+            <button type ="submit">POST 요청 처리</button>
+        </form>
+    </section>
+    <section>
+        <h2>4. 상태 코드</h2>
+        <a href="no-page.html">존재하지 않는 페이지</a>
+    </section>
+</body>
+</html>

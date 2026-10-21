@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello 결과</title>
+</head>
+<body>
+  <h1 th:text="${name} + '님 안녕하세요'">학생님 안녕하세요~</h1>
+<!--th:text는 태그안의 글자를 Thymeleaf가 만든값으로 변경하는 속성이다-->
+<!--${name}}은 Model에서 name이라는 이름으로 저장된 값을 가져온다-->
+<p>Controller에서 잔달한 값을 HTML에 출력했습니다.</p>
+</body>
+</html>

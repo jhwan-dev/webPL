@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>스터디 신청 목록</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+    }
+
+    .container {
+      width: 700px;
+      margin: 60px auto;
+      padding: 30px;
+      background-color: white;
+      border: 1px solid #dddddd;
+      border-radius: 12px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #dddddd;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f1f3f5;
+    }
+
+    .new-link {
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .empty-message {
+      padding: 25px;
+      text-align: center;
+    }
+
+    .home-link {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+ <div class="container">
+   <h1>스터디 신청 목록</h1>
+   <a class="new-link" th:href="@{/study/new}">새 스터디 신청</a>
+   <table>
+     <thead>
+      <tr>
+        <th>번호</th>
+        <th>신청자 이름</th>
+        <th>관심 주제</th>
+        <th>주당 학습시간</th>
+      </tr>
+     </thead>
+     <tbody>
+        <tr th:each="study : ${studies}">
+          <td th:text="${study.id}"></td>
+          <td th:text="${study.name}"></td>
+          <td th:text="${study.topic}"></td>
+          <td th:text="${study.studyHours+'시간'}"></td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(studies)}">
+          <td class="empty-message" colspan="4">등록된 스터디 신청이 없습니다.</td>
+        </tr>
+     </tbody>
+   </table>
+   <a class="home-link" th:href="@{/}">메인화면으로</a>
+ </div>
+</body>
+</html>
