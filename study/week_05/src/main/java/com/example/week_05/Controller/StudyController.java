@@ -39,7 +39,8 @@ public class StudyController {
         if (bindingResult.hasErrors()) {
             return "study-form";
         }
-        studyService.save(studyForm);
+        studyService.save(studyForm.getName(), studyForm.getTopic(), studyForm.getStudyHours());
+        //find by id,annotation, 이윗줄을 꼭 공부해야함 시험출제
         return"redirect:/study";
     }
     @GetMapping
