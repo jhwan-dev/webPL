@@ -73,7 +73,7 @@
      </thead>
      <tbody>
         <tr th:each="study : ${studies}">
-          <td th:text="${study.id}"></td>
+          <td><a th:href="@{/study/{id}(id=${study.id})}" th:text="${study.id}"></a></td>
           <td th:text="${study.name}"></td>
           <td th:text="${study.topic}"></td>
           <td th:text="${study.studyHours+'시간'}"></td>

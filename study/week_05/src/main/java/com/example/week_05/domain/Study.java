@@ -13,7 +13,7 @@ import jakarta.persistence.Id;
 public class Study {
     @Id //기본키. P.K로 사용
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    private Long id;
     private String name;
     private String topic;
     private Integer studyHours;
@@ -30,7 +30,9 @@ public class Study {
         this.studyHours = studyHours;
     }
 
-
+    public Long getId(){
+        return id;
+    }
 
     public String getTopic() {
         return topic;

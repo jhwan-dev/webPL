@@ -1,15 +1,13 @@
 package com.example.week_05.Controller;
 
+import com.example.week_05.domain.Study;
 import com.example.week_05.dto.StudyForm;
 import com.example.week_05.service.StudyService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
 //에러찾기, 어노테이션, 자료형 등 흐름 위주로 공부
 
 @Controller
@@ -48,6 +46,12 @@ public class StudyController {
     public String showStudyList(Model model) {
         model.addAttribute("studies", studyService.findAll());
         return "study-list";
+    }
+    @GetMapping("/{id}")
+    public String showStudyDetail(@PathVariable Long id, Model model) {
+        Study study = studyService.findById(id);
+        model.addAttribute("study", study);
+        return "study-detail";
     }
 }
 //        @ModelAttribute의 역할
