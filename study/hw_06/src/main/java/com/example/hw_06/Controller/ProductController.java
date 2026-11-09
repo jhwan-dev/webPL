@@ -78,4 +78,12 @@ public class ProductController {
         productService.delete(id);
         return "redirect:/products";
     }
+    @GetMapping
+    public String showProductList(
+            @RequestParam(name = "keyword", required = false) String keyword,
+            Model model) {
+        model.addAttribute("products", productService.search(keyword));
+        model.addAttribute("keyword", keyword);
+        return "product-list";
+    }
 }

@@ -79,6 +79,11 @@ CSS에 이미 만들어 둔 container 클래스를 사용합니다.
 <div class="container">
   <h1>상품 목록</h1>
   <a class="new-link" th:href="@{/products/new}">새 상품 등록</a>
+  <form th:action="@{/products}" method="get" class="search-form">
+    <input type="text" name="keyword" th:value="${keyword}" placeholder="상품명">
+    <button type="submit">검색</button>
+    <a th:href="@{/products}">전체 보기</a>
+  </form>
   <table>
     <thead>
     <tr>

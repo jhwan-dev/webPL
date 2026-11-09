@@ -44,4 +44,10 @@ public class ProductService {
     public void delete(Long id) {
         productRepository.deleteById(id);
     }
+    public List<Product> search(String keyword) {
+        if (keyword == null || keyword.isBlank()) {
+            return productRepository.findAll();
+        }
+        return productRepository.findByTitleContaining(keyword);
+    }
 }
