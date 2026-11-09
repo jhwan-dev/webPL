@@ -2,7 +2,10 @@ package com.example.week_05.service;
 
 import com.example.week_05.domain.Study;
 import com.example.week_05.repository.StudyRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -34,9 +37,24 @@ public class StudyService {
                                 "해당 스터디 신청을 찾을 수 없습니다."
                         ));
     }
-    public Study update(Long id, String name, String topic, Integer studyHours) {
+
+    //@Transactional: 트랜잭션 시작,커밋(작업 결과를 db에 최종 확정한다),롤백(작업을 취소하고 트랜잭션 시작 전으로 돌아간다) 관리
+//    트랜잭션: DB에서 여러 작업들을 하나의 작업의 단위로 묶어서 처리하는 과정
+//    실제 호출순서: StudySerivce.findById()호출 -> StudyRepository.save()
+//    -> Hibernate가 SQL을 실행하고 저장한다
+//    StudyService.findByID()를 거치지 않고 repository 작업 호출
+//    save() 호출 불필요, -> 트랜잭션 커밋 과정에서 Hibernate 변경 감지
+//    10주치 참고 설명용 코드는 참고만 공부 x
+    @Transactional
+    public void update(Long id, String name, String topic, Integer studyHours) {
         Study study=findById(id);
-        study.update(name, topic, studyHours);
-        return studyRepository.save(study);
+        study.setName(name);
+        study.setTopic(topic);
+        study.setStudyHours(studyHours);
+    }
+    @Transactional
+    public void delete(Long id) {
+        findById(id);
+        studyRepository.deleteById(id);
     }
 }

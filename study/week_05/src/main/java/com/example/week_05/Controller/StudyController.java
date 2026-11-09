@@ -61,8 +61,8 @@ public class StudyController {
             studyForm.setName(study.getName());
             studyForm.setTopic(study.getTopic());
             studyForm.setStudyHours(study.getStudyHours());
-            model.addAttribute("studyForm", id);
-            model.addAttribute("studyFrom", studyForm);
+            model.addAttribute("studyId", id);
+            model.addAttribute("studyForm", studyForm);
         return "study-edit-form";
     }
     @PostMapping("/{id}/edit")
@@ -75,6 +75,12 @@ public class StudyController {
         }
         studyService.update(id, studyForm.getName(), studyForm.getTopic(), studyForm.getStudyHours());
         return "redirect:/study/"+id;
+    }
+
+    @PostMapping("/{id}/delete")
+    public String deleteStudy(@PathVariable Long id) {
+        studyService.delete(id);
+        return "redirect:/study";
     }
 
 }

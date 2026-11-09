@@ -97,7 +97,7 @@
 <body>
   <div class="container">
     <h1>스터디 신청 수정하기</h1>
-    <form th:action="@{/study{id}/deit(id=${studyId}})" th:object ="${studyForm}" method="post" novalidate>
+    <form th:action="@{/study/{id}/edit(id=${studyId})}" th:object ="${studyForm}" method="post" novalidate>
 
       <label for="name">신청자 이름</label>
       <input type="text" id="name" th:field="*{name}" th:errorclass="input-error" required>
