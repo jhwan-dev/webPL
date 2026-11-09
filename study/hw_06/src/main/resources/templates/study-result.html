@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>스터디 신청 결과</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+    }
+    .container {
+      width: 420px;
+      margin: 80px auto;
+      padding: 30px;
+      text-align: center;
+      background-color: white;
+      border: 1px solid #dddddd;
+      border-radius: 12px;
+    }
+    .result {
+      margin-top: 25px;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>스터디 신청 완료</h1>
+    <div class="result">
+      <p>신청자 : <strong th:text="${studyForm.name}">신청자이름</strong></p>
+      <p>관심주제 : <strong th:text="${studyForm.topic}">관심주제</strong></p>
+      <p>학습 시간 : <strong th:text="${studyForm.StudyHours}">0</strong>시간</p>
+
+    </div>
+<a th:href="@{/study/new}">다시 신청하기</a>
+  </div>
+
+
+
+</body>
+
+</html>
