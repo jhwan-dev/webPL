@@ -1,6 +1,14 @@
 package com.example.hw_06.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private Integer price;
@@ -8,8 +16,12 @@ public class Product {
     private String category;
     private boolean onSale;
 
-    public Product(Long id, String title, Integer price, Integer quantity, String category, boolean onSale) {
-        this.id = id;
+    protected Product() {
+
+    }
+
+    public Product(String title, Integer price, Integer quantity, String category, boolean onSale) {
+
         this.title = title;
         this.price = price;
         this.quantity = quantity;
@@ -38,5 +50,13 @@ public class Product {
 
     public boolean isOnSale() {
         return onSale;
+    }
+
+    public void update(String title, Integer price, Integer quantity, String category, boolean onSale) {
+        this.title = title;
+        this.price = price;
+        this.quantity = quantity;
+        this.category = category;
+        this.onSale = onSale;
     }
 }
