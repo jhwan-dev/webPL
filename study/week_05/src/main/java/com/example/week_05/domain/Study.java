@@ -59,4 +59,9 @@ public class Study {
     public void setStudyHours(Integer studyHours) {
         this.studyHours = studyHours;
     }
+    public void update(String name, String topic, Integer studyHours) {
+        this.name=name;
+        this.topic=topic;
+        this.studyHours=studyHours;
+    }
 }

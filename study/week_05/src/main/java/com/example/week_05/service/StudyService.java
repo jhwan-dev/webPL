@@ -34,4 +34,9 @@ public class StudyService {
                                 "해당 스터디 신청을 찾을 수 없습니다."
                         ));
     }
+    public Study update(Long id, String name, String topic, Integer studyHours) {
+        Study study=findById(id);
+        study.update(name, topic, studyHours);
+        return studyRepository.save(study);
+    }
 }

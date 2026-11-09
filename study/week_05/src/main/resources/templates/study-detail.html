@@ -78,10 +78,10 @@
     </div>
     <div class="item">
       <span class="label">주당 학습시간</span>
-      <span th:text="$|{study.studyHours}시간|"></span>
+      <span th:text="|${study.studyHours}시간|"></span>
     </div>
     <div class="buttons">
-      <a th:href="@{/Study}">목록으로</a>
+      <a th:href="@{/study}">목록으로</a>
       <a th:href="@{/study/{id}/edit(id=${study.id})}">수정</a>
       <form class="delete-form"
             th:action="@{/study/{id}/delete(id=${study.id})}"

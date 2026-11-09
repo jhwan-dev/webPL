@@ -95,6 +95,27 @@
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>스터디 신청 수정하기</h1>
+    <form th:action="@{/study{id}/deit(id=${studyId}})" th:object ="${studyForm}" method="post" novalidate>
+
+      <label for="name">신청자 이름</label>
+      <input type="text" id="name" th:field="*{name}" th:errorclass="input-error" required>
+      <p class="error-message" th:errors="*{name}">신청자 이름 오류</p>
+      <label for="topic">관심 주제</label>
+      <select id="topic" th:field="*{topic}" th:errorclass="input-error" required>
+        <option value="">주제를 선택하세요.</option>
+        <option value="Spring Boot">Spring Boot</option>
+        <option value="JAVA">JAVA</option>
+        <option value="데이터베이스">데이터베이스</option>
+      </select>
+      <p class="error-message" th:errors="*{topic}">관심주제 오류</p>
+      <label for="studyHours">주당 학습시간</label>
+      <input type="number" id="studyHours" th:field="*{studyHours}" min="1" th:errorclass="input-error" required>
+      <p class="error-message" th:errors="*{studyHours}">주당 학습시간 오류</p>
+      <button type="submit">수정하기</button>
+    </form>
+  </div>
 
 </body>
 </html>

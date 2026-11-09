@@ -53,6 +53,30 @@ public class StudyController {
         model.addAttribute("study", study);
         return "study-detail";
     }
+    @GetMapping("/{id}/edit")
+    public String showStudyEditForm(
+            @PathVariable Long id, Model model) {
+            Study study = studyService.findById(id);
+            StudyForm studyForm = new StudyForm();
+            studyForm.setName(study.getName());
+            studyForm.setTopic(study.getTopic());
+            studyForm.setStudyHours(study.getStudyHours());
+            model.addAttribute("studyForm", id);
+            model.addAttribute("studyFrom", studyForm);
+        return "study-edit-form";
+    }
+    @PostMapping("/{id}/edit")
+    public String updateStudy(@PathVariable Long id,
+                              @Valid @ModelAttribute("studyForm") StudyForm studyForm,
+                              BindingResult bindingResult, Model model) {
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("studyId", id);
+            return "study-edit-form";
+        }
+        studyService.update(id, studyForm.getName(), studyForm.getTopic(), studyForm.getStudyHours());
+        return "redirect:/study/"+id;
+    }
+
 }
 //        @ModelAttribute의 역할
 //        1. 폼에서 전달된 name, topic, studyHours와 값을
